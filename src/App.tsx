@@ -1,10 +1,12 @@
 import { Button } from "antd";
+import Dashboard from "./layout/Dashboard";
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
-      <h1 className="text-2xl mb-4">Intern Reaction Project</h1>
+    <div className="flex flex-col justify-center items-center bg-gray-100 min-h-screen">
+      <h1 className="mb-4 text-2xl">Intern Reaction Project</h1>
       <Button type="primary">Test AntD Button</Button>
+      <Dashboard></Dashboard>
     </div>
   );
 }
