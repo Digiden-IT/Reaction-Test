@@ -7,6 +7,7 @@ const Dashboard = () => {
       <ul className="text-center">
         <li>Profile</li>
         <li>Home</li>
+        <li>Logout</li>
       </ul>
     </div>
   )
