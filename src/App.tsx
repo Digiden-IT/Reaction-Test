@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import Dashboard from "./layout/Dashboard";
+import SideBar from "./layout/SideBar";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
 
       <h1>In Progress</h1>
       <h2 className="text-cyan-600"> text Changed</h2>
-
+      <SideBar />
     </div>
   );
 }
