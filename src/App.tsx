@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import { Link,  } from "react-router";
 
 function App() {
   return (
@@ -7,6 +8,12 @@ function App() {
       <Button type="primary">Test AntD Button</Button>
       <h1>In Progress</h1>
       <h2 className="text-amber-900"> New Changes added</h2>
+        
+      <Link to="/ticket">
+        <Button type="primary" className="mt-4">
+          Go to My Tickets
+        </Button>
+        </Link>
     </div>
   );
 }
