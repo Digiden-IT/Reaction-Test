@@ -20,6 +20,11 @@ function App() {
           Go to My Tickets
         </Button>
       </Link>
+      <Link to="/busbooking">
+        <Button type="primary" className="mt-4">
+          Booking Bus
+        </Button>
+      </Link>
 
       <h2 className="text-cyan-600"> text Changed</h2>
       <SideBar />

@@ -1,3 +1,4 @@
+import type { FormInstance } from "antd";
 
 export type BookingStatus = 'CONFIRMED' | 'PENDING' | 'CANCELLED';
 export type PaymentStatus = 'PAID' | 'PENDING' | 'REFUNDED';
@@ -15,4 +16,20 @@ export type TBooking = {
     driverName: string;
     paymentStatus: PaymentStatus;
     SpecialRequests?: string
+}
+
+export type TAddBookinngModal = {
+    modelOpen: boolean;
+    handleCancel: () => void;
+    setAddNewBooking: React.Dispatch<React.SetStateAction<TBooking[]>>
+}
+
+export type TBookingForm = {
+    form: FormInstance<TBooking>;
+    onFinish: (values: TBooking) => void;
+}
+
+
+export type TBookingCardProps = {
+  setAddNewBooking: React.Dispatch<React.SetStateAction<TBooking[]>>
 }
