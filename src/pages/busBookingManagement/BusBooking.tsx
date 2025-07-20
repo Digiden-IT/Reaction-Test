@@ -13,6 +13,21 @@ const BusBooking = () => {
     const [addNewBooking, setAddNewBooking] = useState<TBooking[]>([])
     console.log(addNewBooking)
 
+    const updateBookingInTable = (updateBooking: TBooking) => {
+        setAddNewBooking(prev =>
+            prev.map(booking => booking.bookingID === updateBooking.bookingID ? updateBooking : booking
+            )
+        );
+    }
+
+    const deleteBookingInTable = (deleteBookingId: string) => {
+        setAddNewBooking(prev => prev.filter(booking => booking.bookingID !== deleteBookingId))
+    }
+
+
+
+
+
     return (
         <Layout>
             <Content className='!p-12'>
@@ -22,7 +37,7 @@ const BusBooking = () => {
                 </div>
                 <div className='min-h-screen'>
                     <BusBookingCard setAddNewBooking={setAddNewBooking}></BusBookingCard>
-                    <BusBookingTable></BusBookingTable>
+                    <BusBookingTable addNewBooking={addNewBooking} updateBookingInTable={updateBookingInTable} deleteBookingInTable={deleteBookingInTable}></BusBookingTable>
                 </div>
             </Content>
         </Layout>

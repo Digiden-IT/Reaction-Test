@@ -1,22 +1,21 @@
-import { DatePicker, Flex, Form, Input, Select } from 'antd'
-import type { TBookingForm, } from '../../types/props.type'
+import { DatePicker, Flex, Form, Input, Select } from "antd";
+import type { TBookingForm } from "../../types/props.type";
 
 const { Option } = Select;
 const { TextArea } = Input;
-const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
-
+const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
     return (
         <Form
             form={form}
             layout="vertical"
-            name="add_booking_form"
+            name="edit_booking_form"
             onFinish={onFinish}
         >
-            <Flex gap="16px" wrap>
+            <Flex gap="16px" wrap="wrap">
                 <Form.Item
                     label="Passenger Name"
                     name="passengerName"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input the passenger name!' }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="Enter Full Name" />
@@ -24,76 +23,80 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Contact Number"
                     name="contact"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input your contact number!' }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="+1-555-0123" />
                 </Form.Item>
             </Flex>
-            <Flex wrap gap='16px'>
+
+            <Flex gap="16px" wrap="wrap">
                 <Form.Item
                     label="Origin City"
                     name="originCity"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input the origin city!' }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Origin City' />
+                    <Input placeholder="e.g., New York" />
                 </Form.Item>
                 <Form.Item
-
                     label="Destination City"
                     name="destinationCity"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input the destination city!' }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Destination City' />
+                    <Input placeholder="e.g., Boston" />
                 </Form.Item>
             </Flex>
-            <Flex wrap gap='16px'>
+
+            <Flex gap="16px" wrap="wrap">
                 <Form.Item
                     label="Departure Date & Time"
                     name="departure"
-                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
+                    rules={[{ required: true, message: 'Please select the departure date and time!' }]}
                 >
                     <DatePicker
                         style={{ width: '100%' }}
                         showTime={{ format: 'HH:mm' }}
-                        format="MMM-DD-YYYY HH:mm"
+                        format="YYYY-MM-DD HH:mm"
                     />
                 </Form.Item>
                 <Form.Item
                     label="Seat Number"
                     name="seatNumber"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input the seat number!' }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Seat Number' />
+                    <Input placeholder="e.g., A12" />
                 </Form.Item>
             </Flex>
-            <Flex wrap gap='16px'>
+
+            <Flex gap="16px" wrap="wrap">
                 <Form.Item
                     label="Bus Number"
                     name="busNumber"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, message: 'Please input the bus number!' }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Bus Number' />
+                    <Input placeholder="e.g., BUS-4521" />
                 </Form.Item>
                 <Form.Item
                     label="Driver Name"
                     name="driverName"
-                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
+                    rules={[{ required: true, message: 'Please input the driver name!' }]}
                 >
-                    <Input placeholder='Driver Name' />
+                    <Input placeholder="Mike Johnson" />
                 </Form.Item>
             </Flex>
-            <Flex wrap gap='16px'>
+
+            <Flex gap="16px" wrap="wrap">
                 <Form.Item
                     label="Booking Status"
                     name="bookingStatus"
                     className="flex-1 min-w-[45%]"
+                    rules={[{ required: true, message: 'Please select booking status!' }]}
                 >
                     <Select placeholder="Select a status">
                         <Option value="CONFIRMED">Confirmed</Option>
@@ -105,6 +108,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     label="Payment Status"
                     name="paymentStatus"
                     className="flex-1 min-w-[45%]"
+                    rules={[{ required: true, message: 'Please select payment status!' }]}
                 >
                     <Select placeholder="Select payment status">
                         <Option value="PAID">Paid</Option>
@@ -113,10 +117,10 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     </Select>
                 </Form.Item>
             </Flex>
+
             <Form.Item
                 label="Special Requests"
                 name="specialRequests"
-                className="flex-1 min-w-[45%]"
             >
                 <TextArea rows={3} placeholder="Enter any special requests or notes (optional)" />
             </Form.Item>
@@ -124,4 +128,4 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
     )
 }
 
-export default AddBusBookingForm
+export default EditBookingForm
