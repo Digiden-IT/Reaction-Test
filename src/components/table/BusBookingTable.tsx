@@ -5,7 +5,7 @@ import EditBusBookingModal from '../modal/EditBusBookingModal';
 import { useState } from 'react';
 import BookingDetailsModal from '../modal/BookingDetailsModal';
 
-const BusBookingTable = ({ addNewBooking, updateBookingInTable, deleteBookingInTable }: TBookingTable) => {
+const BusBookingTable = ({ AllBookingData, updateBookingInTable, deleteBookingInTable, searchItem, filterStatus }: TBookingTable) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [bookingToEdit, setBookingToEdit] = useState<TBooking | null>(null);
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
@@ -39,39 +39,17 @@ const BusBookingTable = ({ addNewBooking, updateBookingInTable, deleteBookingInT
         deleteBookingInTable(deleteBooking)
     }
 
+    const filterBooking = AllBookingData.filter(booking => {
+        const SearchByNameIdAndRoute = booking.bookingID.toLowerCase().includes(searchItem.toLowerCase()) ||
+            booking.passengerName.toLowerCase().includes(searchItem.toLowerCase()) ||
+            booking.originCity.toLowerCase().includes(searchItem.toLowerCase()) ||
+            booking.destinationCity.toLowerCase().includes(searchItem.toLowerCase())
 
-    const bookingData: TBooking[] = [
-        {
-            bookingID: 'BK001',
-            passengerName: 'John Smith',
-            originCity: 'New York',
-            destinationCity: 'Boston',
-            departure: 'Jan 15, 2024\n12:30',
-            bookingStatus: 'PENDING',
-            contact: '0000494585',
-            seatNumber: 'A8',
-            busNumber: 'Bus12',
-            driverName: 'xyz',
-            paymentStatus: 'PAID',
-            SpecialRequests: 'Window Seat',
-        },
-        {
-            bookingID: 'BK002',
-            passengerName: 'John Smith',
-            originCity: 'New York',
-            destinationCity: 'Boston',
-            departure: 'Jan 15, 2022\n09:20',
-            bookingStatus: 'CANCELLED',
-            contact: '0437489404',
-            seatNumber: 'A4',
-            busNumber: 'BUS-14',
-            driverName: 'abc',
-            paymentStatus: 'PENDING',
-            SpecialRequests: 'Window Seat',
-        }
-    ]
+        const filterByStatus = filterStatus === 'ALL' ||
+            booking.bookingStatus === filterStatus;
 
-    const AllBookingData = [...bookingData, ...addNewBooking];
+        return SearchByNameIdAndRoute && filterByStatus;
+    })
 
 
     const bookingColumns: TableColumnsType<TBooking> = [
@@ -139,7 +117,7 @@ const BusBookingTable = ({ addNewBooking, updateBookingInTable, deleteBookingInT
         {
             title: 'Action', dataIndex: 'action',
             render: (_, record) => (
-                <Space>
+                <Space size='small'>
                     <Button type='primary' size='small' onClick={() => showDetailModal(record)}>
                         <EyeOutlined title='View Booking' />
                     </Button>
@@ -164,9 +142,15 @@ const BusBookingTable = ({ addNewBooking, updateBookingInTable, deleteBookingInT
         },
 
     ]
+
+    const totalColumnWidth = bookingColumns.reduce((sum, col) => sum + (col.width as number || 0), 0);
+
+
     return (
         <div>
-            <Table columns={bookingColumns} dataSource={AllBookingData} rowKey='bookingID'></Table>
+            <Table columns={bookingColumns} dataSource={filterBooking} rowKey='bookingID'
+                scroll={{ x: totalColumnWidth > 0 ? totalColumnWidth : 900 }}
+            ></Table>
 
             <BookingDetailsModal
                 isModalOpen={isDetailsModalOpen}

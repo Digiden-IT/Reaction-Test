@@ -29,7 +29,7 @@ const BookingDetailsModal = ({ isModalOpen, handleCancel, bookingDetails, onUpda
     };
 
     const handleStatusFinish = (values: TBookingFormValues) => {
-        console.log(values);
+    //    console.log(values);
 
         const updatedStatus: TBooking = {
             ...bookingDetails,
@@ -37,6 +37,8 @@ const BookingDetailsModal = ({ isModalOpen, handleCancel, bookingDetails, onUpda
             paymentStatus: values.paymentStatus || 'PENDING',
         };
 
+
+        console.log("Updated Status:", updatedStatus);
         onUpdate(updatedStatus);
         handleCancel();
     }

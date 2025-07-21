@@ -39,6 +39,8 @@ const EditBusBookingModal = ({ isModalOpen, handleCancel, onUpdate, bookingToEdi
             paymentStatus: values.paymentStatus || 'PENDING',
         };
 
+
+        console.log("Updated Booking Data:", updatedBooking);
         onUpdate(updatedBooking);
         handleCancel();
     }

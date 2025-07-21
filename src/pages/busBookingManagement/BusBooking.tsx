@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 import BusBookingCard from '../../components/card/BusBookingCard';
 import BusBookingTable from '../../components/table/BusBookingTable';
 import { useState } from 'react';
-import type { TBooking } from '../../types/props.type';
+import type { BookingStatus, TBooking } from '../../types/props.type';
 
 
 const { Content } = Layout;
@@ -11,7 +11,43 @@ const { Title, Text } = Typography;
 
 const BusBooking = () => {
     const [addNewBooking, setAddNewBooking] = useState<TBooking[]>([])
-    console.log(addNewBooking)
+    const [searchItem, setSearchItem] = useState<string>('');
+    const [filterStatus, setFilterStatus] = useState<BookingStatus | 'ALL'>('ALL');
+//    console.log(addNewBooking)
+
+    const bookingData: TBooking[] = [
+        {
+            bookingID: 'BK001',
+            passengerName: 'John Smith',
+            originCity: 'New York',
+            destinationCity: 'Boston',
+            departure: 'Jan 15, 2024\n12:30',
+            bookingStatus: 'PENDING',
+            contact: '0000494585',
+            seatNumber: 'A8',
+            busNumber: 'Bus12',
+            driverName: 'xyz',
+            paymentStatus: 'PAID',
+            SpecialRequests: 'Window Seat',
+        },
+        {
+            bookingID: 'BK002',
+            passengerName: 'John Smith',
+            originCity: 'New York',
+            destinationCity: 'Boston',
+            departure: 'Jan 15, 2022\n09:20',
+            bookingStatus: 'CANCELLED',
+            contact: '0437489404',
+            seatNumber: 'A4',
+            busNumber: 'BUS-14',
+            driverName: 'abc',
+            paymentStatus: 'PENDING',
+            SpecialRequests: 'Window Seat',
+        }
+    ]
+
+    const AllBookingData = [...bookingData, ...addNewBooking];
+    const totalBooking = AllBookingData.length;
 
     const updateBookingInTable = (updateBooking: TBooking) => {
         setAddNewBooking(prev =>
@@ -25,9 +61,6 @@ const BusBooking = () => {
     }
 
 
-
-
-
     return (
         <Layout>
             <Content className='!p-12'>
@@ -36,8 +69,8 @@ const BusBooking = () => {
                     <Text>Manage and oversee passenger bookings efficiently</Text>
                 </div>
                 <div className='min-h-screen'>
-                    <BusBookingCard setAddNewBooking={setAddNewBooking}></BusBookingCard>
-                    <BusBookingTable addNewBooking={addNewBooking} updateBookingInTable={updateBookingInTable} deleteBookingInTable={deleteBookingInTable}></BusBookingTable>
+                    <BusBookingCard totalBooking={totalBooking} filterStatus={filterStatus} setFilterStatus={setFilterStatus} searchItem={searchItem} setSearchItem={setSearchItem} setAddNewBooking={setAddNewBooking}></BusBookingCard>
+                    <BusBookingTable filterStatus={filterStatus} searchItem={searchItem} AllBookingData={AllBookingData} updateBookingInTable={updateBookingInTable} deleteBookingInTable={deleteBookingInTable}></BusBookingTable>
                 </div>
             </Content>
         </Layout>

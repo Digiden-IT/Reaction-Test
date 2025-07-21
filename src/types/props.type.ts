@@ -36,13 +36,20 @@ export type TBookingForm = {
 
 
 export type TBookingCardProps = {
+  totalBooking: number;
   setAddNewBooking: React.Dispatch<React.SetStateAction<TBooking[]>>
+  searchItem: string;
+  setSearchItem: React.Dispatch<React.SetStateAction<string>>;
+  filterStatus: BookingStatus | 'ALL'
+  setFilterStatus:  React.Dispatch<React.SetStateAction<BookingStatus | 'ALL'>>; 
 }
 
 export type TBookingTable = {
-    addNewBooking: TBooking[];
+    AllBookingData: TBooking[];
     updateBookingInTable: (values: TBooking) => void;
     deleteBookingInTable: (value: string) => void;
+    searchItem: string;
+    filterStatus: BookingStatus | 'ALL'
 }
 
 export type TEditBookingModelProps = {
