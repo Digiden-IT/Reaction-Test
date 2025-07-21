@@ -1,5 +1,6 @@
 import { DatePicker, Flex, Form, Input, Select } from 'antd'
 import type { TBookingForm, } from '../../types/props.type'
+import { EnvironmentOutlined, PhoneOutlined, TruckOutlined, UserOutlined, UserSwitchOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -19,7 +20,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="Enter Full Name" />
+                    <Input placeholder="Enter Full Name"  prefix={<UserOutlined/>} />
                 </Form.Item>
                 <Form.Item
                     label="Contact Number"
@@ -27,17 +28,17 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="+1-555-0123" />
+                    <Input placeholder="+1-555-0123"  prefix={<PhoneOutlined/>}/>
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
                 <Form.Item
                     label="Origin City"
                     name="originCity"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='New York' />
+                    <Input placeholder='New York' prefix={<EnvironmentOutlined />} />
                 </Form.Item>
                 <Form.Item
 
@@ -46,7 +47,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Boston' />
+                    <Input placeholder='Boston' prefix={<EnvironmentOutlined />} />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -69,7 +70,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='A12' />
+                    <Input placeholder='A12'  prefix={<UserSwitchOutlined/>} />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -79,7 +80,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Bus-123' />
+                    <Input placeholder='Bus-123' prefix={<TruckOutlined/>}/>
                 </Form.Item>
                 <Form.Item
                     label="Driver Name"
@@ -87,7 +88,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Mike Johson' />
+                    <Input placeholder='Mike Johson' prefix={<UserSwitchOutlined/>} />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -96,10 +97,9 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     name="bookingStatus"
                     className="flex-1 min-w-[45%]"
                 >
-                    <Select placeholder="Select a status" defaultValue='PENDING'>
+                    <Select placeholder="Select a status" >
                         <Option value="CONFIRMED">Confirmed</Option>
                         <Option value="PENDING">Pending</Option>
-                        <Option value="CANCELLED">Cancelled</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item
@@ -107,7 +107,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     name="paymentStatus"
                     className="flex-1 min-w-[45%]"
                 >
-                    <Select placeholder="Select payment status" defaultValue='PENDING'>
+                    <Select placeholder="Select payment status" >
                         <Option value="PAID">Paid</Option>
                         <Option value="PENDING">Pending</Option>
                         <Option value="REFUNDED">Refunded</Option>

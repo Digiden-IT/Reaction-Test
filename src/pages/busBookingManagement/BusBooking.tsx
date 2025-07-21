@@ -13,7 +13,7 @@ const BusBooking = () => {
     const [addNewBooking, setAddNewBooking] = useState<TBooking[]>([])
     const [searchItem, setSearchItem] = useState<string>('');
     const [filterStatus, setFilterStatus] = useState<BookingStatus | 'ALL'>('ALL');
-//    console.log(addNewBooking)
+    //    console.log(addNewBooking)
 
     const bookingData: TBooking[] = [
         {
@@ -48,6 +48,9 @@ const BusBooking = () => {
 
     const AllBookingData = [...bookingData, ...addNewBooking];
     const totalBooking = AllBookingData.length;
+    const totalPending = AllBookingData.filter(pending => pending.bookingStatus === 'PENDING').length;
+    const totalConfirm = AllBookingData.filter(pending => pending.bookingStatus === 'CONFIRMED').length;
+    const totalCancel = AllBookingData.filter(pending => pending.bookingStatus === 'CANCELLED').length
 
     const updateBookingInTable = (updateBooking: TBooking) => {
         setAddNewBooking(prev =>
@@ -63,13 +66,13 @@ const BusBooking = () => {
 
     return (
         <Layout>
-            <Content className='!p-12'>
+            <Content className='!p-10'>
                 <div className='text-left'>
                     <Title level={2}>Bus Booking Management</Title>
                     <Text>Manage and oversee passenger bookings efficiently</Text>
                 </div>
                 <div className='min-h-screen'>
-                    <BusBookingCard totalBooking={totalBooking} filterStatus={filterStatus} setFilterStatus={setFilterStatus} searchItem={searchItem} setSearchItem={setSearchItem} setAddNewBooking={setAddNewBooking}></BusBookingCard>
+                    <BusBookingCard totalCancel={totalCancel} totalConfirm={totalConfirm} totalPending={totalPending} totalBooking={totalBooking} filterStatus={filterStatus} setFilterStatus={setFilterStatus} searchItem={searchItem} setSearchItem={setSearchItem} setAddNewBooking={setAddNewBooking}></BusBookingCard>
                     <BusBookingTable filterStatus={filterStatus} searchItem={searchItem} AllBookingData={AllBookingData} updateBookingInTable={updateBookingInTable} deleteBookingInTable={deleteBookingInTable}></BusBookingTable>
                 </div>
             </Content>

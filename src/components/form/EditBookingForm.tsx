@@ -1,5 +1,6 @@
 import { DatePicker, Flex, Form, Input, Select } from "antd";
 import type { TBookingForm } from "../../types/props.type";
+import { EnvironmentOutlined, PhoneOutlined, TruckOutlined, UserOutlined, UserSwitchOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -11,14 +12,14 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
             name="edit_booking_form"
             onFinish={onFinish}
         >
-            <Flex gap="16px" wrap="wrap">
+            <Flex gap="16px" wrap>
                 <Form.Item
                     label="Passenger Name"
                     name="passengerName"
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="Enter Full Name" />
+                    <Input placeholder="Enter Full Name" prefix={<UserOutlined />} />
                 </Form.Item>
                 <Form.Item
                     label="Contact Number"
@@ -26,40 +27,40 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="+1-555-0123" />
+                    <Input placeholder="+1-555-0123" prefix={<PhoneOutlined />} />
                 </Form.Item>
             </Flex>
-
-            <Flex gap="16px" wrap="wrap">
+            <Flex wrap gap='16px'>
                 <Form.Item
                     label="Origin City"
                     name="originCity"
-                    rules={[{ required: true }]}
+                    rules={[{ required: true, }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="e.g., New York" />
+                    <Input placeholder='New York' prefix={<EnvironmentOutlined />} />
                 </Form.Item>
                 <Form.Item
+
                     label="Destination City"
                     name="destinationCity"
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="e.g., Boston" />
+                    <Input placeholder='Boston' prefix={<EnvironmentOutlined />} />
                 </Form.Item>
             </Flex>
-
-            <Flex gap="16px" wrap="wrap">
+            <Flex wrap gap='16px'>
                 <Form.Item
                     label="Departure Date & Time"
                     name="departure"
-                    className="flex-1 min-w-[45%]"
                     rules={[{ required: true }]}
+                    className="flex-1 min-w-[45%]"
                 >
                     <DatePicker
                         style={{ width: '100%' }}
                         showTime={{ format: 'HH:mm' }}
-                        format="YYYY-MM-DD HH:mm"
+                        format="MMM-DD-YYYY HH:mm"
+                        placeholder='Select Date And Time'
                     />
                 </Form.Item>
                 <Form.Item
@@ -68,26 +69,25 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="e.g., A12" />
+                    <Input placeholder='A12' prefix={<UserSwitchOutlined />} />
                 </Form.Item>
             </Flex>
-
-            <Flex gap="16px" wrap="wrap">
+            <Flex wrap gap='16px'>
                 <Form.Item
                     label="Bus Number"
                     name="busNumber"
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="e.g., BUS-4521" />
+                    <Input placeholder='Bus-123' prefix={<TruckOutlined />} />
                 </Form.Item>
                 <Form.Item
                     label="Driver Name"
                     name="driverName"
-                    className="flex-1 min-w-[45%]"
                     rules={[{ required: true }]}
+                    className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder="Mike Johnson" />
+                    <Input placeholder='Mike Johson' prefix={<UserSwitchOutlined />} />
                 </Form.Item>
             </Flex>
 

@@ -38,6 +38,9 @@ export type TBookingForm = {
 
 export type TBookingCardProps = {
   totalBooking: number;
+  totalPending: number;
+  totalConfirm: number;
+  totalCancel: number;
   setAddNewBooking: React.Dispatch<React.SetStateAction<TBooking[]>>
   searchItem: string;
   setSearchItem: React.Dispatch<React.SetStateAction<string>>;
