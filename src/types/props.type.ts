@@ -16,7 +16,7 @@ export type TBooking = {
     busNumber: string;
     driverName: string;
     paymentStatus: PaymentStatus;
-    SpecialRequests?: string
+    specialRequests?: string
 }
 
 export type TBookingFormValues = Omit<TBooking, 'departure'> & {
@@ -27,6 +27,7 @@ export type TAddBookinngModal = {
     modelOpen: boolean;
     handleCancel: () => void;
     setAddNewBooking: React.Dispatch<React.SetStateAction<TBooking[]>>
+    totalBooking: number;
 }
 
 export type TBookingForm = {

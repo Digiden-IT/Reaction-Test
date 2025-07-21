@@ -37,7 +37,6 @@ const BookingDetailsModal = ({ isModalOpen, handleCancel, bookingDetails, onUpda
             paymentStatus: values.paymentStatus || 'PENDING',
         };
 
-
         console.log("Updated Status:", updatedStatus);
         onUpdate(updatedStatus);
         handleCancel();
@@ -95,7 +94,7 @@ const BookingDetailsModal = ({ isModalOpen, handleCancel, bookingDetails, onUpda
                     </Col>
                     <Col span={24}>
                         <Card title='Special Requests' size="small">
-                            <Text>{bookingDetails?.SpecialRequests}</Text>
+                            <Text>{bookingDetails?.specialRequests}</Text>
                         </Card>
                     </Col>
                     <Col span={24}>

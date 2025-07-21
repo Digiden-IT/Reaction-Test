@@ -4,13 +4,13 @@ import AddBusBookingForm from "../form/AddBusBookingForm"
 import { useState } from "react";
 
 
-const AddBusBookingModal = ({ setAddNewBooking, modelOpen, handleCancel }: TAddBookinngModal) => {
+const AddBusBookingModal = ({ setAddNewBooking, modelOpen, handleCancel, totalBooking }: TAddBookinngModal) => {
   const [form] = Form.useForm<TBookingFormValues>();
-  const [bookingId, setBookingId] = useState(9);
+  const [bookingId, setBookingId] = useState(totalBooking);
 
   const onFinish = (values: TBookingFormValues) => {
     console.log(values)
-    const newId = String(bookingId).padStart(3, '0');
+    const newId = String(bookingId + 1).padStart(3, '0');
     const newBookingId = 'BK'.concat(newId)
     setBookingId(prevCount => prevCount + 1);
     console.log(bookingId)

@@ -39,7 +39,7 @@ const BusBookingCard = ({ setAddNewBooking, searchItem, setSearchItem, filterSta
         <Flex justify='right' className='w-[50%]' align='center' gap='16px'>
           <p>Total: {totalBooking} bookings</p>
           <Button type='primary' onClick={showModal}><PlusOutlined /> Add Booking</Button>
-          <AddBusBookingModal setAddNewBooking={setAddNewBooking} handleCancel={handleCancel} modelOpen={modelOpen} ></AddBusBookingModal>
+          <AddBusBookingModal totalBooking={totalBooking} setAddNewBooking={setAddNewBooking} handleCancel={handleCancel} modelOpen={modelOpen} ></AddBusBookingModal>
         </Flex>
       </Flex>
     </Card >

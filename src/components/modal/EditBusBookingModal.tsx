@@ -2,6 +2,7 @@
 import { Form, Modal } from 'antd'
 import type { TBooking, TBookingFormValues, TEditBookingModelProps } from '../../types/props.type'
 import EditBookingForm from '../form/EditBookingForm'
+import dayjs from 'dayjs';
 
 const EditBusBookingModal = ({ isModalOpen, handleCancel, onUpdate, bookingToEdit, AllBookingData }: TEditBookingModelProps) => {
     const [form] = Form.useForm<TBookingFormValues>();
@@ -9,20 +10,30 @@ const EditBusBookingModal = ({ isModalOpen, handleCancel, onUpdate, bookingToEdi
     if (bookingToEdit) {
         form.setFieldsValue({
             ...AllBookingData,
+            bookingID: bookingToEdit.bookingID,
             passengerName: bookingToEdit.passengerName,
             contact: bookingToEdit.contact,
             busNumber: bookingToEdit.busNumber,
             originCity: bookingToEdit.originCity,
             destinationCity: bookingToEdit.destinationCity,
-            //departure: bookingToEdit.departure,
+            departure: dayjs(bookingToEdit.departure),
             driverName: bookingToEdit.driverName,
-            seatNumber: bookingToEdit.seatNumber
+            seatNumber: bookingToEdit.seatNumber,
+            bookingStatus: bookingToEdit.bookingStatus || 'PENDING',
+            paymentStatus: bookingToEdit.paymentStatus || 'PENDING',
+            specialRequests: bookingToEdit.specialRequests,
         });
     }
 
     const handleFormFinish = (values: TBookingFormValues) => {
         console.log(values);
 
+        if (bookingToEdit) {
+            form.setFieldsValue({
+                ...AllBookingData,
+                bookingID: bookingToEdit.bookingID
+            })
+        }
         const updatedBooking: TBooking = {
             ...bookingToEdit!,
             ...values,

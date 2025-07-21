@@ -28,7 +28,7 @@ const BusBooking = () => {
             busNumber: 'Bus12',
             driverName: 'xyz',
             paymentStatus: 'PAID',
-            SpecialRequests: 'Window Seat',
+            specialRequests: 'Window Seat',
         },
         {
             bookingID: 'BK002',
@@ -42,7 +42,7 @@ const BusBooking = () => {
             busNumber: 'BUS-14',
             driverName: 'abc',
             paymentStatus: 'PENDING',
-            SpecialRequests: 'Window Seat',
+            specialRequests: 'Window Seat',
         }
     ]
 
