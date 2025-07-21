@@ -73,6 +73,7 @@ export type TicketFiltersProps = {
   onStatusChange: (value: string | null) => void;
   onPriorityChange: (value: string | null) => void;
   onClearFilters: () => void;
+  onAddUser: () => void;
 };
 
 export type DataCardProps = {

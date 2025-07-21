@@ -15,9 +15,9 @@ export default function UserFormModal({
   return (
     <>
       <div className="mt-10 container max-w-7xl mx-auto">
-        <Button type="primary" onClick={onAddUser} className="!ml-[90%]">
+        {/* <Button type="primary" onClick={onAddUser} className="lg:!ml-[90%] mb-4 ml-[40%] ">
           Add User
-        </Button>
+        </Button> */}
       </div>
 
       <Modal
@@ -25,6 +25,7 @@ export default function UserFormModal({
         title={editingKey !== null ? "Edit Ticket" : "Create Ticket" }
         onCancel={onClose}
         footer={null}
+        style={{ top: 20 }}  
       >
         <Form form={form} layout="vertical" onFinish={onSubmit}>
           {/* <Form.Item

@@ -9,18 +9,25 @@ import {
 import { MoreOutlined } from "@ant-design/icons";
 import type { User, UserTableProps } from "../../typs/prop.type";
 
-const UserTable = ({ users, onEdit, onDelete ,onViewDetails }: UserTableProps) => {
+const UserTable = ({
+  users,
+  onEdit,
+  onDelete,
+  onViewDetails,
+}: UserTableProps) => {
   const columns: TableColumnsType<User> = [
     {
       title: "Ticket ID",
       dataIndex: "key",
       key: "key",
+      fixed: 'left',
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Customer Name",
       dataIndex: "customerName",
       key: "customerName",
+      //  fixed: 'left',
     },
     {
       title: "Issue Summary",
@@ -61,37 +68,37 @@ const UserTable = ({ users, onEdit, onDelete ,onViewDetails }: UserTableProps) =
       dataIndex: "assignedAgent",
       key: "assignedAgent",
     },
-     {
-    title: "Actions",
-    key: "actions",
-    render: ( record: User) => {
-      const menuItems: MenuProps['items'] = [
-        {
-  key: 'view',
-  label: 'View Details',
-  onClick: () => onViewDetails(record),
-}
-,
-        {
-          key: 'edit',
-          label: 'Edit',
-          onClick: () => onEdit(record),
-        },
-        {
-          key: 'delete',
-          label: <span style={{ color: 'red' }}>Delete</span>,
-          onClick: () => onDelete(record.key),  
-        },
-      ];
+    {
+      title: "Actions",
+      key: "actions",
+      fixed: 'right',
+      render: (record: User) => {
+        const menuItems: MenuProps["items"] = [
+          {
+            key: "view",
+            label: "View Details",
+            onClick: () => onViewDetails(record),
+          },
+          {
+            key: "edit",
+            label: "Edit",
+            onClick: () => onEdit(record),
+          },
+          {
+            key: "delete",
+            label: <span style={{ color: "red" }}>Delete</span>,
+            onClick: () => onDelete(record.key),
+          },
+        ];
 
-      return (
-        <Dropdown menu={{ items: menuItems }} trigger={['click']}>
-          <Button icon={<MoreOutlined />} />
-        </Dropdown>
-      );
+        return (
+          <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
+            <Button icon={<MoreOutlined />} />
+          </Dropdown>
+        );
+      },
     },
-  },
-];
+  ];
 
   return (
     <Table
@@ -99,6 +106,7 @@ const UserTable = ({ users, onEdit, onDelete ,onViewDetails }: UserTableProps) =
       dataSource={users}
       pagination={{ pageSize: 5 }}
       rowKey="key"
+      scroll={{ x: "max-content" }}
     />
   );
 };

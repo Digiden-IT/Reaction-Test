@@ -12,6 +12,10 @@ import UserDetailsModal from "../../components/modals/UserDetailsModal";
 
 import TicketFilters from "../../components/filters/TicketFilters";
 
+import TableHeader from "../../components/headers/TableHeader";
+
+
+
 const Tickets = () => {
   const [form] = Form.useForm();
   const [editingKey, setEditingKey] = useState<number | null>(null);
@@ -198,6 +202,7 @@ const Tickets = () => {
         onAddUser={handleAdd}
       />
       {/* <SearchBar searchText={searchText} onSearchChange={setSearchText} /> */}
+   <TableHeader/>
       <TicketFilters
         searchText={searchText}
         statusFilter={statusFilter}
@@ -206,9 +211,10 @@ const Tickets = () => {
         onStatusChange={setStatusFilter}
         onPriorityChange={setPriorityFilter}
         onClearFilters={handleClearFilters}
+         onAddUser={handleAdd}
       />
 
-      <div className="container max-w-[1300px] mx-auto mt-8">
+      <div className="container max-w-[1300px] mx-auto mt-8 p-3">
         <UserTable
           users={filteredUsers}
           onEdit={handleEdit}
