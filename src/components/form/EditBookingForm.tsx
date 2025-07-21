@@ -15,7 +15,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Passenger Name"
                     name="passengerName"
-                    rules={[{ required: true, message: 'Please input the passenger name!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="Enter Full Name" />
@@ -23,7 +23,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Contact Number"
                     name="contact"
-                    rules={[{ required: true, message: 'Please input your contact number!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="+1-555-0123" />
@@ -34,7 +34,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Origin City"
                     name="originCity"
-                    rules={[{ required: true, message: 'Please input the origin city!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="e.g., New York" />
@@ -42,7 +42,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Destination City"
                     name="destinationCity"
-                    rules={[{ required: true, message: 'Please input the destination city!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="e.g., Boston" />
@@ -54,7 +54,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     label="Departure Date & Time"
                     name="departure"
                     className="flex-1 min-w-[45%]"
-                    rules={[{ required: true, message: 'Please select the departure date and time!' }]}
+                    rules={[{ required: true }]}
                 >
                     <DatePicker
                         style={{ width: '100%' }}
@@ -65,7 +65,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Seat Number"
                     name="seatNumber"
-                    rules={[{ required: true, message: 'Please input the seat number!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="e.g., A12" />
@@ -76,7 +76,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                 <Form.Item
                     label="Bus Number"
                     name="busNumber"
-                    rules={[{ required: true, message: 'Please input the bus number!' }]}
+                    rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
                     <Input placeholder="e.g., BUS-4521" />
@@ -85,7 +85,7 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     label="Driver Name"
                     name="driverName"
                     className="flex-1 min-w-[45%]"
-                    rules={[{ required: true, message: 'Please input the driver name!' }]}
+                    rules={[{ required: true }]}
                 >
                     <Input placeholder="Mike Johnson" />
                 </Form.Item>
@@ -96,9 +96,9 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     label="Booking Status"
                     name="bookingStatus"
                     className="flex-1 min-w-[45%]"
-                    rules={[{ required: true, message: 'Please select booking status!' }]}
+                    rules={[{ required: true }]}
                 >
-                    <Select placeholder="Select a status">
+                    <Select placeholder="Select a status" defaultValue='PENDING'>
                         <Option value="CONFIRMED">Confirmed</Option>
                         <Option value="PENDING">Pending</Option>
                         <Option value="CANCELLED">Cancelled</Option>
@@ -108,9 +108,9 @@ const EditBookingForm = ({ form, onFinish }: TBookingForm) => {
                     label="Payment Status"
                     name="paymentStatus"
                     className="flex-1 min-w-[45%]"
-                    rules={[{ required: true, message: 'Please select payment status!' }]}
+                    rules={[{ required: true }]}
                 >
-                    <Select placeholder="Select payment status">
+                    <Select placeholder="Select payment status" defaultValue='PENDING'>
                         <Option value="PAID">Paid</Option>
                         <Option value="PENDING">Pending</Option>
                         <Option value="REFUNDED">Refunded</Option>

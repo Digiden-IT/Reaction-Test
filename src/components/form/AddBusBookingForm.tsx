@@ -37,7 +37,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Origin City' />
+                    <Input placeholder='New York' />
                 </Form.Item>
                 <Form.Item
 
@@ -46,7 +46,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Destination City' />
+                    <Input placeholder='Boston' />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -60,6 +60,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                         style={{ width: '100%' }}
                         showTime={{ format: 'HH:mm' }}
                         format="MMM-DD-YYYY HH:mm"
+                        placeholder='Select Date And Time'
                     />
                 </Form.Item>
                 <Form.Item
@@ -68,7 +69,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Seat Number' />
+                    <Input placeholder='A12' />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -78,7 +79,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Bus Number' />
+                    <Input placeholder='Bus-123' />
                 </Form.Item>
                 <Form.Item
                     label="Driver Name"
@@ -86,7 +87,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     rules={[{ required: true }]}
                     className="flex-1 min-w-[45%]"
                 >
-                    <Input placeholder='Driver Name' />
+                    <Input placeholder='Mike Johson' />
                 </Form.Item>
             </Flex>
             <Flex wrap gap='16px'>
@@ -95,7 +96,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     name="bookingStatus"
                     className="flex-1 min-w-[45%]"
                 >
-                    <Select placeholder="Select a status">
+                    <Select placeholder="Select a status" defaultValue='PENDING'>
                         <Option value="CONFIRMED">Confirmed</Option>
                         <Option value="PENDING">Pending</Option>
                         <Option value="CANCELLED">Cancelled</Option>
@@ -106,7 +107,7 @@ const AddBusBookingForm = ({ form, onFinish }: TBookingForm) => {
                     name="paymentStatus"
                     className="flex-1 min-w-[45%]"
                 >
-                    <Select placeholder="Select payment status">
+                    <Select placeholder="Select payment status" defaultValue='PENDING'>
                         <Option value="PAID">Paid</Option>
                         <Option value="PENDING">Pending</Option>
                         <Option value="REFUNDED">Refunded</Option>
